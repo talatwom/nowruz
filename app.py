@@ -18,6 +18,7 @@ def index():
         recipient_name = request.form.get('recipient_name')
         sender_name = request.form.get('sender_name')
         topic = request.form.get('topic')
+        message_length = request.form.get('message_length', 'short')
         
         # بررسی محدودیت درخواست
         client_ip = request.remote_addr
@@ -27,7 +28,7 @@ def index():
             return render_template('index.html', error=f"لطفاً {wait_time} ثانیه صبر کنید و دوباره تلاش کنید.")
         
         if recipient_name and sender_name:
-            message = generate_greeting(llm, recipient_name, sender_name, topic)
+            message = generate_greeting(llm, recipient_name, sender_name, topic, message_length)
     
     return render_template('index.html', message=message)
 
@@ -37,6 +38,7 @@ def api_generate():
     recipient_name = data.get('recipient_name')
     sender_name = data.get('sender_name')
     topic = data.get('topic')
+    message_length = data.get('message_length', 'short')
     
     # بررسی محدودیت درخواست
     client_ip = request.remote_addr
@@ -50,7 +52,7 @@ def api_generate():
     if not recipient_name or not sender_name:
         return jsonify({'error': 'نام گیرنده و فرستنده الزامی است'}), 400
     
-    message = generate_greeting(llm, recipient_name, sender_name, topic)
+    message = generate_greeting(llm, recipient_name, sender_name, topic, message_length)
     return jsonify({'message': message})
 
 if __name__ == '__main__':

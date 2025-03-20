@@ -104,6 +104,48 @@ body {
     background-color: rgba(55, 55, 55, 0.8);
 }
 
+/* انتخاب‌گر نوع پیام */
+.message-type-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.message-type-option {
+    flex: 1;
+    min-width: 120px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.message-type-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.message-type-label {
+    display: block;
+    padding: 12px 15px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: rgba(48, 48, 48, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.message-type-option input[type="radio"]:checked + .message-type-label {
+    background-color: rgba(76, 175, 80, 0.2);
+    border-color: #4CAF50;
+    color: #ffffff;
+}
+
+.message-type-option:hover .message-type-label {
+    background-color: rgba(55, 55, 55, 0.8);
+}
+
 .btn {
     padding: 12px 20px;
     border: none;

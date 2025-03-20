@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = {
                 recipient_name: document.getElementById('recipient_name').value,
                 sender_name: document.getElementById('sender_name').value,
-                topic: document.getElementById('topic').value
+                topic: document.getElementById('topic').value,
+                message_length: document.querySelector('input[name="message_length"]:checked').value
             };
             
             // ارسال درخواست به سرور
